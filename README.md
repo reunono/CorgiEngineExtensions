@@ -4,6 +4,7 @@ This repository contains community-created extensions for the Corgi Engine, More
 ## Contents
 * **CharacterLadderExtended**, _by Keith_ : This script will allow you to reset your jump counter after attaching to a ladder. It also allows you jump from a ladder with your Run Speed if the Run Button is pressed while jumping off.
 * **DialogueZoneExtended**, _by Keith_ : This will allow your AI to patrol and then stop to speak to the player, and then continue on a regular patrol.
+* **DialogueZoneItems**, _by Muppo_ : A class that will enable the possibility for dialogues to request and give items.
 * **ObjectActivatedZones**, _by Keith_ : This will allow you to create zones that are activated when colliding with the specified object, similar to the way the native KeyOperatedZones are activated by a key.
 
 ## Why aren't these in the engine directly?
