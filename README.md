@@ -7,6 +7,7 @@ This repository contains community-created extensions for the Corgi Engine, More
 * **DialogueZoneItems**, _by Muppo_ : A class that will enable the possibility for dialogues to request and give items.
 * **ObjectActivatedZones**, _by Keith_ : This will allow you to create zones that are activated when colliding with the specified object, similar to the way the native KeyOperatedZones are activated by a key.
 * **TeleporterInstant**, _by Muppo_ : A script based on the Teleporter script to allow characters to teleport instantly.
+* **WeaponDisable**, _by NAiLz_ : This component handles the disabling of weapons during both wall hanging and ladder climbing.  This is to create a more visually pleasing situation and should be supplimented in the animator with animations that include the weapon in the position the designer would like it to be in while clibming or wall hanging.
 
 ## Why aren't these in the engine directly?
 Because they weren't created by Renaud, the creator of the Corgi Engine, because I want to keep the Engine simple to use and just pouring features into it (as cool as they may be) wouldn't be such a great idea, and because the Engine is meant to be extended upon, and these extensions are great examples of that.
