@@ -6,6 +6,7 @@ This repository contains community-created extensions for the Corgi Engine, More
 * **DialogueZoneExtended**, _by Keith_ : This will allow your AI to patrol and then stop to speak to the player, and then continue on a regular patrol.
 * **DialogueZoneItems**, _by Muppo_ : A class that will enable the possibility for dialogues to request and give items.
 * **ObjectActivatedZones**, _by Keith_ : This will allow you to create zones that are activated when colliding with the specified object, similar to the way the native KeyOperatedZones are activated by a key.
+* **SplitScreen**, _by Levrault_ : A couple of classes to add split screen to your game, while having the option to fuse both cameras into one if your targets are close enough. You'll need three camera in your scene, a main, a left and right. For the left and right, set the viewport rect to 0.5 to make it take only half of the screen.
 * **TeleporterInstant**, _by Muppo_ : A script based on the Teleporter script to allow characters to teleport instantly.
 * **WeaponDisable**, _by NAiLz_ : This component handles the disabling of weapons during both wall hanging and ladder climbing.  This is to create a more visually pleasing situation and should be supplimented in the animator with animations that include the weapon in the position the designer would like it to be in while clibming or wall hanging.
 
