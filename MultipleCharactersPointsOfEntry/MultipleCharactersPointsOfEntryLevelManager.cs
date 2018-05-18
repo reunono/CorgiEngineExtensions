@@ -15,9 +15,9 @@ namespace Manager {
             PointsOfEntryStorage point = GameManager.Instance.GetPointsOfEntry (SceneManager.GetActiveScene ().name);
             int checkpointCounter = 0;
             int characterCounter = 1;
+            bool spawned = false;
 
             foreach (Character player in Players) {
-                bool spawned = false;
 
                 if (AutoAttributePlayerIDs) {
                     player.SetPlayerID ("Player" + characterCounter);
@@ -32,16 +32,16 @@ namespace Manager {
                     characterCounter++;
                 }
 
-                if (!spawned) {
-                    if (Checkpoints.Count > checkpointCounter + 1) {
-                        if (Checkpoints[checkpointCounter] != null) {
-                            Checkpoints[checkpointCounter].SpawnPlayer (player);
-                            characterCounter++;
-                            spawned = true;
-                            checkpointCounter++;
-                        }
+                if (!spawned && Checkpoints.Count > checkpointCounter + 1) {
+                    if (Checkpoints[checkpointCounter] != null) {
+                        Checkpoints[checkpointCounter].SpawnPlayer (player);
+                        characterCounter++;
+                        spawned = true;
+                        checkpointCounter++;
                     }
+                }
 
+                if (!spawned) {
                     Checkpoints[checkpointCounter].SpawnPlayer (player);
                     characterCounter++;
                 }
