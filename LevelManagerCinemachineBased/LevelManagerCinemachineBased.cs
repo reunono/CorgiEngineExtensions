@@ -35,7 +35,7 @@ public class LevelManagerCinemachineBased : LevelManager
 
         _instance = this;
 
-        In stantiatePlayableCharacters();
+        InstantiatePlayableCharacters();
     }
 
     public CinemachineVirtualCamera[] vCams;
