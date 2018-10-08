@@ -1,8 +1,8 @@
 ## Corgi Engine Extensions
-This repository contains community-created extensions for the Corgi Engine, More Mountains' bestselling platforming solution, [available on the Unity Asset Store](https://www.assetstore.unity3d.com/#!/content/26617?aid=1011lKhG). These extensions can be anything, from an alternate take on an existing Character Ability, to brand new ones, or new ways to use the engine.
+This repository contains community-created extensions for the Corgi Engine, More Mountains' bestselling platforming solution, [available on the Unity Asset Store](https://assetstore.unity.com/packages/templates/systems/corgi-engine-2d-2-5d-platformer-26617?aid=1011lKhG). These extensions can be anything, from an alternate take on an existing Character Ability, to brand new ones, or new ways to use the engine.
 
 ## Contents
-* **ActionsAndDecisions**, _by Muppo_ : a collection of actions and decisions to use with the new (v5.0) Advanced AI system. 
+* **ActionsAndDecisions**, _by Muppo_ : a collection of actions and decisions to use with the new (v5.0) Advanced AI system.
 * **CharacterLadderExtended**, _by Keith_ : This script will allow you to reset your jump counter after attaching to a ladder. It also allows you jump from a ladder with your Run Speed if the Run Button is pressed while jumping off.
 * **DialogueZoneExtended**, _by Keith_ : This will allow your AI to patrol and then stop to speak to the player, and then continue on a regular patrol.
 * **DialogueZoneItems**, _by Muppo_ : A class that will enable the possibility for dialogues to request and give items.
