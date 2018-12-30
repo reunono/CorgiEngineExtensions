@@ -6,9 +6,9 @@ using UnityEngine.Events;
 
 namespace MoreMountains.CorgiEngine
 {	
-	/// This script extends Key Operated Zone, you can now set any amount of item to be used, only conditions are: they have to be the same ID and non stackable.
-	/// intended to use with Corgi Engine 5.3+
-	/// V2.1 / Muppo (2018)
+	/// This script extends Key Operated Zone, you can now set any amount of item to be used, no matter if stackable or not, only condition is they have to be the same ID
+	/// intended to use with Corgi Engine 4.2+
+	/// V2.0 / Muppo (2018)
 
 	public enum inventoryToLook { Main, Weapon, Hotbar }
 
@@ -18,18 +18,16 @@ namespace MoreMountains.CorgiEngine
 			"<b>Only keys of same ID</b> will work with this.",MoreMountains.Tools.InformationAttribute.InformationType.Info,false)]
 
 		/// How many keys are needed to open
-		public int NumberOfKeys;
+		public int NumberOfKeys = 1;
 		/// In which inventory should we look for
 		public inventoryToLook _inventoryToLook = inventoryToLook.Main;
 
 
 		public override void TriggerButtonAction()
 		{
-			if (!CheckNumberOfUses())
-				{ return; }
+			if (!CheckNumberOfUses()) { return; }
 
-			if (_collidingObject == null)
-				{ return; }
+			if (_collidingObject == null) { return; }
 
 			if (RequiresKey)
 			{
@@ -38,6 +36,7 @@ namespace MoreMountains.CorgiEngine
 					{ return; }	
 
 				_keyList.Clear ();
+
 				/// Search in the selected inventory
 				if(_inventoryToLook == inventoryToLook.Main)
 					_keyList = characterInventory.MainInventory.InventoryContains(KeyID);
@@ -48,59 +47,42 @@ namespace MoreMountains.CorgiEngine
 				if(_inventoryToLook == inventoryToLook.Hotbar)
 					_keyList = characterInventory.HotbarInventory.InventoryContains(KeyID);
 
-				// Check the key amount
-				if (_keyList.Count == 0) {
-					if (_buttonPromptAnimator != null) {
-						_buttonPromptAnimator.SetTrigger("Error");
-					}
-                    return;
-				}
-
-				/// Check if we have one or more keys
-				if (_keyList.Count >= 1)
+				if (_keyList.Count == 0)
 				{
-					// Check if the ammount is less than required. If so, do nothing
-					if (_keyList.Count < NumberOfKeys)
-					{
-						if (_buttonPromptAnimator != null) {
-							_buttonPromptAnimator.SetTrigger("Error");
-						}
-						return;
-					}
-					
-					// But if the ammount is equal or higher than required ...
-					if (_keyList.Count >= NumberOfKeys)
-					{
-						// We count how many times we need to use that kind of key ...
-						for (int k = 1; k < NumberOfKeys + 1; k++)
-						{
-							// And repeat the method to use them from inventory as many times as necessary
-							UseRequiredKeys();
-						}
-					}
+					return;
 				}
-				else {
-					base.TriggerButtonAction();
+				else
+				{
+					base.TriggerButtonAction ();			
 					UseRequiredKeys();
 				}
 			}
-
 			TriggerKeyAction ();
-			ActivateZone ();
+			ZoneActivated ();
 		}
 
 		/// Uses the required keys.
 		protected virtual void UseRequiredKeys()
 		{
 			CharacterInventory characterInventory = _collidingObject.gameObject.GetComponentNoAlloc<CharacterInventory> ();
-			if(_inventoryToLook == inventoryToLook.Main) {
-				characterInventory.MainInventory.UseItem(KeyID); }
-		
-			if(_inventoryToLook == inventoryToLook.Weapon) {
-				characterInventory.WeaponInventory.UseItem(KeyID); }
 
-			if(_inventoryToLook == inventoryToLook.Hotbar) {
-				characterInventory.HotbarInventory.UseItem(KeyID); }
+			if(_inventoryToLook == inventoryToLook.Main)
+			{
+				for (int k = 1; k < NumberOfKeys; k++)
+				{ characterInventory.MainInventory.UseItem(KeyID); }
+			}
+
+			if(_inventoryToLook == inventoryToLook.Weapon)
+			{
+				for (int k = 1; k < NumberOfKeys; k++)
+				{ characterInventory.WeaponInventory.UseItem(KeyID); }
+			}
+
+			if(_inventoryToLook == inventoryToLook.Hotbar)
+			{
+				for (int k = 1; k < NumberOfKeys; k++)
+				{ characterInventory.HotbarInventory.UseItem(KeyID); }
+			}
 		}
 
 		/// Disables the key required
