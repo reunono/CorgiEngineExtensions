@@ -20,7 +20,7 @@ This repository contains community-created extensions for the Corgi Engine, More
 Because they weren't created by Renaud, the creator of the Corgi Engine, because I want to keep the Engine simple to use and just pouring features into it (as cool as they may be) wouldn't be such a great idea, and because the Engine is meant to be extended upon, and these extensions are great examples of that.
 
 ## Do I need to pay something? Give credit?
-No you don't, it's all free to use. Feel free to give credit to their creators though (they'll mention that in the class' comments if they want to.
+No you don't, it's all free to use. Feel free to give credit to their creators though (they'll mention that in the class' comments if they want to).
 
 ## Are more extensions coming? Can I contribute?
 Absolutely, contributions are always welcome. If you want to contribute, drop me a line using [the form on this page](http://corgi-engine.moremountains.com/corgi-engine-contact), or create a pull request on this very repository.
