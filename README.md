@@ -7,6 +7,8 @@ This repository contains community-created extensions for the Corgi Engine, More
 * **CharacterLadderExtended**, _by Keith_ : This script will allow you to reset your jump counter after attaching to a ladder. It also allows you jump from a ladder with your Run Speed if the Run Button is pressed while jumping off.
 * **DialogueZoneExtended**, _by Keith_ : This will allow your AI to patrol and then stop to speak to the player, and then continue on a regular patrol.
 * **DialogueZoneItems**, _by Muppo_ : A class that will enable the possibility for dialogues to request and give items.
+* **ItemDrop**, _by Quinn221_ : a class to have a random item drop when an enemy dies. Add this to your enemy death effect prefab, then drag in the items you want to drop, then fill in the drop rate.
+* **JumpToJetpack**, _by DavidMBradbury_ : simulates a sort of "struggle jump"
 * **KeyOperatedZonesExtended**, _by Muppo_ : allows you to set an ammount of needed keys to open whatever you add this component, the only limitation is keys must not be stackable and have to be the same ID, that's it: one key per slot on inventory.
 * **LevelManagerCinemachineBased**, _by Prog-Maker_ : a level manager that makes your Cinemachine powered camera follow your character.
 * **MovingPlatformExtended**, _by Muppo_ : moving platforms that teleport to their initial point once they've reached the end of their path.
