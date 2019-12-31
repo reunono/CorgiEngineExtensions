@@ -6,6 +6,7 @@ This repository contains community-created extensions for the Corgi Engine, More
 * **BGMToggler**, _by Muppo_ : a component used to change/mute background music when a player stays or exits a collider.
 * **CharacterLadderExtended**, _by Keith_ : This script will allow you to reset your jump counter after attaching to a ladder. It also allows you jump from a ladder with your Run Speed if the Run Button is pressed while jumping off.
 * **ControlFreak2Integration**, _by christougher_ : Control Freak 2 integration with the Corgi Engine.
+* **CustomAutoRespawn**, _by Muppo_ : Add this to an AI and it will be allowed to respawn after the set time and activate an animation on both itself and the spawner prefab (if set).
 * **DialogueZoneExtended**, _by Keith_ : This will allow your AI to patrol and then stop to speak to the player, and then continue on a regular patrol.
 * **DialogueZoneItems**, _by Muppo_ : A class that will enable the possibility for dialogues to request and give items.
 * **ItemDrop**, _by Quinn221_ : a class to have a random item drop when an enemy dies. Add this to your enemy death effect prefab, then drag in the items you want to drop, then fill in the drop rate.
