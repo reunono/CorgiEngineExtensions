@@ -12,7 +12,7 @@ namespace MoreMountains.CorgiEngine
 	/// <summary>
 	/// This script allow you to create requesting items dialogues
 	/// Intended to use with Corgi Engine 5.1+
-	/// v2.0 / Muppo (2018)
+	/// v2.0.1 / Muppo (2020)
 	/// </summary>
 
 	public class DialogueZoneItems : DialogueZone 
@@ -132,7 +132,7 @@ namespace MoreMountains.CorgiEngine
 					_characterButtonActivation.ButtonActivatedZone = null;
 				}
 
-				if (ActivableMoreThanOnce)
+				if (ActivableMoreThanOnce && !itemReceived)
 				{
 					_activable = false;
 					_playing = false;
@@ -165,7 +165,7 @@ namespace MoreMountains.CorgiEngine
 		protected virtual IEnumerator NeedItem()
 		{
 			// Check if the requested item is in any of the Player's inventories
-			CharacterInventory characterInventory = _collidingObject.gameObject.GetComponentNoAlloc<CharacterInventory> ();
+			CharacterInventory characterInventory = _collidingObject.gameObject.MMGetComponentNoAlloc<CharacterInventory> ();
 			_itemList.Clear();
 			_itemListSpecial.Clear();
 			_itemList = characterInventory.MainInventory.InventoryContains (itemID);
