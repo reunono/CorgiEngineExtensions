@@ -13,6 +13,7 @@ This repository contains community-created extensions for the Corgi Engine, More
 * **JumpToJetpack**, _by DavidMBradbury_ : simulates a sort of "struggle jump"
 * **KeyOperatedZonesExtended**, _by Muppo_ : allows you to set an ammount of needed keys to open whatever you add this component, the only limitation is keys must not be stackable and have to be the same ID, that's it: one key per slot on inventory.
 * **LevelManagerCinemachineBased**, _by Prog-Maker_ : a level manager that makes your Cinemachine powered camera follow your character.
+* **MoveAwayPlatform**, _by Muppo_ : Moving platform extension with Moving Away feature.
 * **MovingPlatformExtended**, _by Muppo_ : moving platforms that teleport to their initial point once they've reached the end of their path.
 * **MultipleCharactersPointsOfEntryLevelManager**, _by Levrault_ : an extension of the LevelManager class to handle multiple points of entry in multiplayer games.
 * **ObjectActivatedZones**, _by Keith_ : This will allow you to create zones that are activated when colliding with the specified object, similar to the way the native KeyOperatedZones are activated by a key.
