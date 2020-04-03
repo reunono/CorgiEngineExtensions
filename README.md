@@ -15,7 +15,7 @@ This repository contains community-created extensions for the Corgi Engine, More
 * **LevelManagerCinemachineBased**, _by Prog-Maker_ : a level manager that makes your Cinemachine powered camera follow your character.
 * **MoveAwayPlatform**, _by Muppo_ : Moving platform extension with Moving Away feature.
 * **MovingPlatformExtended**, _by Muppo_ : moving platforms that teleport to their initial point once they've reached the end of their path.
-* **MultiInventoryDetails**, _by men8_ : an addon to handle all active inventories on scene.
+* **MultiInventoryDetails**, _by men8_ : an addon to handle all active inventories on scene. See [this repo](https://github.com/men8/MultiInventoryDetails) for more info.
 * **MultipleCharactersPointsOfEntryLevelManager**, _by Levrault_ : an extension of the LevelManager class to handle multiple points of entry in multiplayer games.
 * **ObjectActivatedZones**, _by Keith_ : This will allow you to create zones that are activated when colliding with the specified object, similar to the way the native KeyOperatedZones are activated by a key.
 * **SplitScreen**, _by Levrault_ : A couple of classes to add split screen to your game, while having the option to fuse both cameras into one if your targets are close enough. You'll need three camera in your scene, a main, a left and right. For the left and right, set the viewport rect to 0.5 to make it take only half of the screen.
