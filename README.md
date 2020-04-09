@@ -18,6 +18,7 @@ This repository contains community-created extensions for the Corgi Engine, More
 * **MultiInventoryDetails**, _by men8_ : an addon to handle all active inventories on scene. See [this repo](https://github.com/men8/MultiInventoryDetails) for more info.
 * **MultipleCharactersPointsOfEntryLevelManager**, _by Levrault_ : an extension of the LevelManager class to handle multiple points of entry in multiplayer games.
 * **ObjectActivatedZones**, _by Keith_ : This will allow you to create zones that are activated when colliding with the specified object, similar to the way the native KeyOperatedZones are activated by a key.
+* **SimpleConditionalAction**, _by Muppo_ : Add this component to an emtpy gameobject and set a reference tag, when all the tagged objects are disabled, feedbacks and actions will be played before this script disable itself.
 * **SplitScreen**, _by Levrault_ : A couple of classes to add split screen to your game, while having the option to fuse both cameras into one if your targets are close enough. You'll need three camera in your scene, a main, a left and right. For the left and right, set the viewport rect to 0.5 to make it take only half of the screen.
 * **TeleporterInstant**, _by Muppo_ : A script based on the Teleporter script to allow characters to teleport instantly.
 * **TeleporterWithZoom**, _by Muppo_ : Teleporter with Pixel Perfect Camera pixel per unit custom value, allows you to simulate zooms on selected rooms (i.e. entering a little room).
