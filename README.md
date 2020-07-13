@@ -3,6 +3,7 @@ This repository contains community-created extensions for the Corgi Engine, More
 
 ## Contents
 * **ActionsAndDecisions**, _by Muppo_ : a collection of actions and decisions to use with the new (v5.0) Advanced AI system.
+* **AICrawler**, _by Muppo_ : lets you create an AI that will crawl on surfaces and rotate accordingly
 * **BGMToggler**, _by Muppo_ : a component used to change/mute background music when a player stays or exits a collider.
 * **CharacterLadderExtended**, _by Keith_ : This script will allow you to reset your jump counter after attaching to a ladder. It also allows you jump from a ladder with your Run Speed if the Run Button is pressed while jumping off.
 * **ControlFreak2Integration**, _by christougher_ : Control Freak 2 integration with the Corgi Engine.
