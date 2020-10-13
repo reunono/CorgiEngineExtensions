@@ -11,6 +11,7 @@ This repository contains community-created extensions for the Corgi Engine, More
 * **CustomAutoRespawn**, _by Muppo_ : Add this to an AI and it will be allowed to respawn after the set time and activate an animation on both itself and the spawner prefab (if set).
 * **DialogueZoneExtended**, _by Keith_ : This will allow your AI to patrol and then stop to speak to the player, and then continue on a regular patrol.
 * **DialogueZoneItems**, _by Muppo_ : A class that will enable the possibility for dialogues to request and give items.
+* **HealthGUI**, _by Nathan_ : a component you can use to display your current Health as hearts instead of as a progress bar
 * **ItemDrop**, _by Quinn221_ : a class to have a random item drop when an enemy dies. Add this to your enemy death effect prefab, then drag in the items you want to drop, then fill in the drop rate.
 * **JumpToJetpack**, _by DavidMBradbury_ : simulates a sort of "struggle jump"
 * **KeyOperatedZonesExtended**, _by Muppo_ : allows you to set an ammount of needed keys to open whatever you add this component, the only limitation is keys must not be stackable and have to be the same ID, that's it: one key per slot on inventory.
