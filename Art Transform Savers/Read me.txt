@@ -1,0 +1,8 @@
+This is a script which helps with the parallax scripts of corgi engine or any other. It's for saving the current sprite positions in the scene.
+
+Place ArtTransformShortcut on the main gameobject which contains all of your art. For metroidvanias, if  you have multiple rooms set up under one gameobject, place the script at that gameobject.
+
+Then, for each art game object whose transform details you want to save, add an ArtTransformSaver
+
+Then, from the ArtTransformShortcut, you can get all ArtTransformSavers, and from there, you can save all transforms of all objects that have the ArtTransformSaver script.
+
