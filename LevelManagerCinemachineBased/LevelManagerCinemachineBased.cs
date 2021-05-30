@@ -14,11 +14,11 @@ public class LevelManagerCinemachineBased : LevelManager
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType();
+                _instance = FindObjectOfType<LevelManagerCinemachineBased>();
                 if (_instance == null)
                 {
                     GameObject obj = new GameObject();
-                    _instance = obj.AddComponent();
+                    _instance = obj.AddComponent<LevelManagerCinemachineBased>();
                 }
             }
             return _instance;
@@ -56,27 +56,27 @@ public class LevelManagerCinemachineBased : LevelManager
         // we store all the checkpoints present in the level, ordered by their x value
         if ((CheckpointAttributionAxis == CheckpointsAxis.x) && (CheckpointAttributionDirection == CheckpointDirections.Ascending))
         {
-            Checkpoints = FindObjectsOfType().OrderBy(o => o.transform.position.x).ToList();
+            Checkpoints = FindObjectsOfType<CheckPoint>().OrderBy(o => o.transform.position.x).ToList();
         }
-        if ((CheckpointAttributionAxis == CheckpointsAxis.x) && (CheckpointAttributionDirection == Che ckpointDirections.Descending))
-{
-            Checkpoints = FindObjectsOfType().OrderByDescending(o => o.transform.position.x).ToList();
+        if ((CheckpointAttributionAxis == CheckpointsAxis.x) && (CheckpointAttributionDirection == CheckpointDirections.Descending))
+        {
+            Checkpoints = FindObjectsOfType<CheckPoint>().OrderByDescending(o => o.transform.position.x).ToList();
         }
         if ((CheckpointAttributionAxis == CheckpointsAxis.y) && (CheckpointAttributionDirection == CheckpointDirections.Ascending))
         {
-            Checkpoints = FindObjectsOfType().OrderBy(o => o.transform.position.y).ToList();
+            Checkpoints = FindObjectsOfType<CheckPoint>().OrderBy(o => o.transform.position.y).ToList();
         }
         if ((CheckpointAttributionAxis == CheckpointsAxis.y) && (CheckpointAttributionDirection == CheckpointDirections.Descending))
         {
-            Checkpoints = FindObjectsOfType().OrderByDescending(o => o.transform.position.y).ToList();
+            Checkpoints = FindObjectsOfType<CheckPoint>().OrderByDescending(o => o.transform.position.y).ToList();
         }
         if ((CheckpointAttributionAxis == CheckpointsAxis.z) && (CheckpointAttributionDirection == CheckpointDirections.Ascending))
         {
-            Checkpoints = FindObjectsOfType().OrderBy(o => o.transform.position.z).ToList();
+            Checkpoints = FindObjectsOfType<CheckPoint>().OrderBy(o => o.transform.position.z).ToList();
         }
-        if ((CheckpointAttributionAxis == Checkpo intsAxis.z) && (CheckpointAttributionDirection == CheckpointDirections.Descending))
-{
-            Checkpoints = FindObjectsOfType().OrderByDescending(o => o.transform.position.z).ToList();
+        if ((CheckpointAttributionAxis == CheckpointsAxis.z) && (CheckpointAttributionDirection == CheckpointDirections.Descending))
+        {
+            Checkpoints = FindObjectsOfType<CheckPoint>().OrderByDescending(o => o.transform.position.z).ToList();
         }
 
         // we assign the first checkpoint 

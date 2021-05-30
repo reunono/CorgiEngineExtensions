@@ -14,8 +14,8 @@ namespace MoreMountains.CorgiEngine
 
 	public class KeyAmountOperatedZone : KeyOperatedZone
 	{
-		[Information("Does this need more than one key? Set the ammount here.\n" +
-			"<b>Only keys of same ID</b> will work with this.",MoreMountains.Tools.InformationAttribute.InformationType.Info,false)]
+		[MMInformation("Does this need more than one key? Set the ammount here.\n" +
+			"<b>Only keys of same ID</b> will work with this.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 
 		/// How many keys are needed to open
 		public int NumberOfKeys;
@@ -23,7 +23,7 @@ namespace MoreMountains.CorgiEngine
 		public inventoryToLook _inventoryToLook = inventoryToLook.Main;
 
 
-		public override void TriggerButtonAction()
+		public override void TriggerButtonAction(GameObject instigator)
 		{
 			if (!CheckNumberOfUses())
 				{ return; }
@@ -33,7 +33,7 @@ namespace MoreMountains.CorgiEngine
 
 			if (RequiresKey)
 			{
-				CharacterInventory characterInventory = _collidingObject.gameObject.GetComponentNoAlloc<CharacterInventory> ();
+				CharacterInventory characterInventory = _collidingObject.gameObject.MMGetComponentNoAlloc<CharacterInventory> ();
 				if (characterInventory == null)
 					{ return; }	
 
@@ -80,7 +80,7 @@ namespace MoreMountains.CorgiEngine
 					}
 				}
 				else {
-					base.TriggerButtonAction();
+					base.TriggerButtonAction(instigator);
 					UseRequiredKeys();
 				}
 			}
@@ -92,7 +92,7 @@ namespace MoreMountains.CorgiEngine
 		/// Uses the required keys.
 		protected virtual void UseRequiredKeys()
 		{
-			CharacterInventory characterInventory = _collidingObject.gameObject.GetComponentNoAlloc<CharacterInventory> ();
+			CharacterInventory characterInventory = _collidingObject.gameObject.MMGetComponentNoAlloc<CharacterInventory> ();
 			if(_inventoryToLook == inventoryToLook.Main) {
 				characterInventory.MainInventory.UseItem(KeyID); }
 		

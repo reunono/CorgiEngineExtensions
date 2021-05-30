@@ -27,7 +27,7 @@ namespace Manager {
 
                 // entry point spawn
                 if (point != null) {
-                    Players[characterCounter - 1].RespawnAt (PointsOfEntry[point.PointOfEntryIndex], Character.FacingDirections.Right);
+                    Players[characterCounter - 1].RespawnAt (PointsOfEntry[point.PointOfEntryIndex].Position, Character.FacingDirections.Right);
                     spawned = true;
                     characterCounter++;
                 }

@@ -13,7 +13,6 @@ public class WeaponDisable : CharacterAbility {
     private GameObject weaponSpecial;
     private CharacterHandleWeapon weaponScript;
     private CharacterHandleSecondaryWeapon secondaryWeaponScript;
-    private CharacterHandleSpecialWeapon specialWeaponScript;
  
     public bool secondaryWeapon;
     public bool specialWeapon;
@@ -40,7 +39,6 @@ public class WeaponDisable : CharacterAbility {
  
         weaponScript = GetComponent<CharacterHandleWeapon>();
         secondaryWeaponScript = GetComponent<CharacterHandleSecondaryWeapon>();
-        specialWeaponScript = GetComponent<CharacterHandleSpecialWeapon>();
  
         usingSwitch = false;
     }
@@ -50,12 +48,10 @@ public class WeaponDisable : CharacterAbility {
         if(_movement.CurrentState == CharacterStates.MovementStates.LadderClimbing || _movement.CurrentState == CharacterStates.MovementStates.WallClinging || usingSwitch)
         {
             DisableNormalWeapons();
-            DisableSpecialWeapons();
         }
         else
         {
             EnableNormalWeapons();
-            EnableSpecialWeapons();
         }
     }
  
@@ -72,15 +68,6 @@ public class WeaponDisable : CharacterAbility {
         }
     }
  
-    public void EnableSpecialWeapons ()
-    {
-        if(specialWeapon && specialWeaponScript != null)
-        {
-            weaponSpecial.SetActive(true);
-            specialWeaponScript.enabled = true;
-        }
-    }
- 
     public void DisableNormalWeapons ()
     {
         weapon.SetActive(false);
@@ -90,15 +77,6 @@ public class WeaponDisable : CharacterAbility {
         {
             weapon2.SetActive(false);
             secondaryWeaponScript.enabled = false;
-        }
-    }
- 
-    public void DisableSpecialWeapons ()
-    {
-        if(specialWeapon && specialWeaponScript != null)
-        {
-            weaponSpecial.SetActive(false);
-            specialWeaponScript.enabled = false;
         }
     }
 }

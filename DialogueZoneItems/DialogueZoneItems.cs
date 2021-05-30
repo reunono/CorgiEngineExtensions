@@ -25,25 +25,25 @@ namespace MoreMountains.CorgiEngine
 		[Space (10)]
 		[Header("Item Options")]
 
-		[Information("Does this character give any item? If this is checked and the item set, character will give it when the dialogue ends.",MoreMountains.Tools.InformationAttribute.InformationType.Info,false)]
+		[MMInformation("Does this character give any item? If this is checked and the item set, character will give it when the dialogue ends.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		public bool giveItem = false;
 		public Transform ItemToGive;
 		protected bool itemGiven = false;
 
 		[Space (5)]
-		[Information("Does this character request an item? If so don't forget to set the item ID and make it usable or the dialogue will never go forward.",MoreMountains.Tools.InformationAttribute.InformationType.Info,false)]
+		[MMInformation("Does this character request an item? If so don't forget to set the item ID and make it usable or the dialogue will never go forward.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		public bool needItem = false;
 		public string itemID;
 		protected bool itemReceived = false;
 
 		[Space (5)]
-		[Information("Does this character wants the item? If you want the character to keep it, check this. If you rather like Player to keep it, don't check this." +
-			"\nIf you want this item to be special (not usable by player), check it and it will be stored on a hidden inventory.",MoreMountains.Tools.InformationAttribute.InformationType.Info,false)]
+		[MMInformation("Does this character wants the item? If you want the character to keep it, check this. If you rather like Player to keep it, don't check this." +
+			"\nIf you want this item to be special (not usable by player), check it and it will be stored on a hidden inventory.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		public bool deliverItem;
 		public bool deliverSpecialItem;
 
 		[Space (10)]
-		[Information("Set the last dialogue when the request is finished. If you want some action to be done when Player gives the item, set it here.",MoreMountains.Tools.InformationAttribute.InformationType.Info,false)]
+		[MMInformation("Set the last dialogue when the request is finished. If you want some action to be done when Player gives the item, set it here.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		[Multiline]
 		public string[] FinalDialogue;
 
@@ -118,7 +118,7 @@ namespace MoreMountains.CorgiEngine
 
 				_currentIndex = 0;
 				Destroy(_dialogueBox.gameObject);
-				_collider.enabled = false;
+				_buttonActivatedZoneCollider.enabled = false;
 				_activated = true;
 
 				if (!CanMoveWhileTalking)

@@ -7,7 +7,7 @@ namespace MoreMountains.CorgiEngine
     public class MovingPlatformExtended : MovingPlatform
     {
         [Header("Repeat Loop")]
-        [Information("Select '<b>Only Once</b>' then check this and the platform will respawn at the first point when last one is reached.", MoreMountains.Tools.InformationAttribute.InformationType.Info, false)]
+        [MMInformation("Select '<b>Only Once</b>' then check this and the platform will respawn at the first point when last one is reached.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
         public bool Repeat = false;
 
 

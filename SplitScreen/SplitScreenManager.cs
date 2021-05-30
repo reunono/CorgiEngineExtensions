@@ -22,16 +22,16 @@ namespace CameraUtils {
     private CameraBehaviors _cameraBehavior = CameraBehaviors.Single;
 
     [Header("Full Screen Camera")]
-    [Information("The Full Screen Camera is the main camera, the one that take all the screen.", MoreMountains.Tools.InformationAttribute.InformationType.Info, false)]
+    [MMInformation("The Full Screen Camera is the main camera, the one that take all the screen.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
     public Camera mainCamera;
 
     [Header("Split Screen Camera")]
-    [Information("Set the left/right camera. You will need to edit there viewport rec options to left them take half of the screen. Don't forgot to set your camera's Z offset value to -10. If you don't do it, you will have some issues on splitWarning screen mode.", MoreMountains.Tools.InformationAttribute.InformationType.Info, false)]
+    [MMInformation("Set the left/right camera. You will need to edit there viewport rec options to left them take half of the screen. Don't forgot to set your camera's Z offset value to -10. If you don't do it, you will have some issues on splitWarning screen mode.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
     public Camera leftCamera;
     public Camera rightCamera;
 
     [Header("Options")]
-    [Information("A trigger that will set show the splitted cameras instead of the full one when the distance between the two player is greater that this value ", MoreMountains.Tools.InformationAttribute.InformationType.Info, false)]
+    [MMInformation("A trigger that will set show the splitted cameras instead of the full one when the distance between the two player is greater that this value ", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
     public float distanceBeforeSplitting = 10f;
 
     // players positions

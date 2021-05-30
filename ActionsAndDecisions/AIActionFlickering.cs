@@ -26,7 +26,7 @@ namespace MoreMountains.CorgiEngine
 
 
 			_character = GetComponent<Character>();
-			if (gameObject.GetComponentNoAlloc<SpriteRenderer>() != null)
+			if (gameObject.MMGetComponentNoAlloc<SpriteRenderer>() != null)
 			{
 				_renderer = GetComponent<SpriteRenderer>();	
 				_initialColor = GetComponent<SpriteRenderer>().color;

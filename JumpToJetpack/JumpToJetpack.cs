@@ -43,8 +43,7 @@ namespace MoreMountains.CorgiEngine // you might want to use your own namespace 
             if (_controller.State.IsGrounded && _hitApex)
             {
                 _hitApex = false;
-                StopAbilityUsedSfx();
-                PlayAbilityStopSfx();
+                PlayAbilityStopFeedbacks();
             }
         }
  
@@ -62,8 +61,7 @@ namespace MoreMountains.CorgiEngine // you might want to use your own namespace 
                     if (!_abilityStart)
                     {
                         _abilityStart = true;
-                        PlayAbilityStartSfx();
-                        PlayAbilityUsedSfx();
+                        PlayAbilityStartFeedbacks();
                     }
                 }
                 if (_inputManager.JumpButton.State.CurrentState == MMInput.ButtonStates.ButtonUp)

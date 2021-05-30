@@ -45,7 +45,7 @@ namespace MoreMountains.CorgiEngine
 		protected virtual void OnTriggerEnter2D(Collider2D collider)
 			{
 				//If the player enters the collider we ignore it and exit
-				if (collider.gameObject.GetComponentNoAlloc<Character> ()) {
+				if (collider.gameObject.MMGetComponentNoAlloc<Character> ()) {
 					return;
 				} 
 
@@ -77,7 +77,7 @@ namespace MoreMountains.CorgiEngine
 		protected virtual void OnTriggerExit2D(Collider2D collider)
 			{
 				//If the player enters the collider we ignore it and exit
-				if (collider.gameObject.GetComponentNoAlloc<Character> ()) {
+				if (collider.gameObject.MMGetComponentNoAlloc<Character> ()) {
 					return;
 				} 
 

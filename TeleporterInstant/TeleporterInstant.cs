@@ -22,9 +22,9 @@ namespace MoreMountains.CorgiEngine
 		public GameObject TeleportEffect;
 
 		[Header("Camera Settings")]
-		[Information("Set the Regular Camera is mandatory for this script to work." +
+		[MMInformation("Set the Regular Camera is mandatory for this script to work." +
 			"\nBlock Camera allow you to freeze camera movement immediately before " +
-			"the teleport is used. Uncheck it for standard behaviour",MoreMountains.Tools.InformationAttribute.InformationType.Info,false)]
+			"the teleport is used. Uncheck it for standard behaviour",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 
 		/// Set the Regular Camera which behaviour will be override
 		public CameraController regularCamera;
@@ -75,7 +75,7 @@ namespace MoreMountains.CorgiEngine
 		/// <summary>
 		/// If we're button activated and if the button is pressed, we teleport
 		/// </summary>
-		public override void TriggerButtonAction()
+		public override void TriggerButtonAction(GameObject instigator)
 		{
 			if (!CheckNumberOfUses())
 			{
@@ -83,10 +83,10 @@ namespace MoreMountains.CorgiEngine
 			}
 			if (_player.GetComponent<Collider2D>()!=null)
 			{
-				base.TriggerButtonAction ();
+				base.TriggerButtonAction (instigator);
 				Teleport(_player.GetComponent<Collider2D>());
 			}
-			ZoneActivated ();
+			ActivateZone();
 		}
 
 		/// <summary>

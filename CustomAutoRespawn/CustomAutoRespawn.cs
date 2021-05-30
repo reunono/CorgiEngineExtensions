@@ -11,8 +11,8 @@ namespace MoreMountains.CorgiEngine
     /// v 1.0 (Muppo 2019)
     public class CustomAutoRespawn : AutoRespawn
     {
-   		[Information("Add this to an AI and it will be allowed to respawn after the set time and activate an animation on both itself and the spawner prefab (if set)\n"+
-           "Use Spawn Animation Duration and Spawner Animation Delay to fine tune animations on each animator.",MoreMountains.Tools.InformationAttribute.InformationType.Info,false)]
+   		[MMInformation("Add this to an AI and it will be allowed to respawn after the set time and activate an animation on both itself and the spawner prefab (if set)\n"+
+           "Use Spawn Animation Duration and Spawner Animation Delay to fine tune animations on each animator.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 
         public bool RepositionToInitOnRespawn = true;
         public float spawnAnimationDuration;

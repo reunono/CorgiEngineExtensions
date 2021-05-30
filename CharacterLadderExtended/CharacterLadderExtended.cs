@@ -78,10 +78,10 @@ namespace MoreMountains.CorgiEngine
 				//We use this to check if the current state is climbing or not. If it is not climbing we check the inputs and push through the correct speed for the character.
 				if (_movement.CurrentState != CharacterStates.MovementStates.LadderClimbing) {
 					if (_inputManager.RunButton.State.CurrentState == MMInput.ButtonStates.ButtonDown || _inputManager.RunButton.State.CurrentState == MMInput.ButtonStates.ButtonPressed) {
-						_characterBasicMovement.MovementSpeed = gameObject.GetComponent<CharacterRun> ().RunSpeed;
+						_characterHorizontalMovement.MovementSpeed = gameObject.GetComponent<CharacterRun> ().RunSpeed;
 					}
 					if (_inputManager.RunButton.State.CurrentState == MMInput.ButtonStates.ButtonUp) {
-						_characterBasicMovement.ResetHorizontalSpeed ();
+						_characterHorizontalMovement.ResetHorizontalSpeed ();
 					}
 
 				}
@@ -96,11 +96,10 @@ namespace MoreMountains.CorgiEngine
 			}
 
 			// we stop our sounds if needed
-			if (_movement.CurrentState != CharacterStates.MovementStates.LadderClimbing && _abilityInProgressSfx != null)
+			if (_movement.CurrentState != CharacterStates.MovementStates.LadderClimbing)
 			{
 				// we play our exit sound
-				StopAbilityUsedSfx();
-				PlayAbilityStopSfx();
+				PlayAbilityStopFeedbacks();
 			}
 		}
 
@@ -112,8 +111,7 @@ namespace MoreMountains.CorgiEngine
 			if (_movement.CurrentState != CharacterStates.MovementStates.LadderClimbing)
 			{
 				// we start our sounds
-				PlayAbilityStartSfx();
-				PlayAbilityUsedSfx();
+				PlayAbilityStartFeedbacks();
 			}
 
 			//If selected in the inspector, we reset the number of jumps allowed when the player attaches to the ladder.

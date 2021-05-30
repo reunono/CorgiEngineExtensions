@@ -77,23 +77,23 @@ namespace MoreMountains.CorgiEngine
 				return;
 			}
 			// we add a blinking A prompt to the top of the zone
-			_buttonA = (GameObject)Instantiate(Resources.Load("GUI/ButtonA"));	
+			GameObject prompt  = (GameObject)Instantiate(Resources.Load("GUI/ButtonA"));	
 
 			//We get the transform of the parent sprite to ensure the prompt is above the sprite
-			_buttonA.transform.position = gameObject.GetComponentInParent<BoxCollider2D> ().transform.position + PromptRelativePosition; 
-			_buttonA.transform.parent = transform;
-			_buttonA.GetComponent<SpriteRenderer>().material.color=new Color(1f,1f,1f,0f);
-			StartCoroutine(MMFade.FadeSprite(_buttonA.GetComponent<SpriteRenderer>(),0.2f,new Color(1f,1f,1f,1f)));	
+			prompt.transform.position = gameObject.GetComponentInParent<BoxCollider2D> ().transform.position + PromptRelativePosition; 
+			prompt.transform.parent = transform;
+			prompt.GetComponent<SpriteRenderer>().material.color=new Color(1f,1f,1f,0f);
+			StartCoroutine(MMFade.FadeSprite(prompt.GetComponent<SpriteRenderer>(),0.2f,new Color(1f,1f,1f,1f)));	
 		}
 
 		public override void StartDialogue()
 		{
 			// if the button A prompt is displayed, we hide it
-			if (_buttonA!=null)
-				Destroy(_buttonA);
+			if (_buttonPrompt!=null)
+				Destroy(_buttonPrompt);
 
 			// if the dialogue zone has no box collider, we do nothing and exit
-			if (_collider==null)
+			if (_buttonActivatedZoneCollider==null)
 				return;	
 
 			// if the zone has already been activated and can't be activated more than once.
@@ -182,7 +182,7 @@ namespace MoreMountains.CorgiEngine
 			{
 				_currentIndex=0;
 				Destroy(_dialogueBox.gameObject);
-				_collider.enabled=false;
+				_buttonActivatedZoneCollider.enabled=false;
 				// we set activated to true as the dialogue zone has now been turned on		
 				_activated=true;
 

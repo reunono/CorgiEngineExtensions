@@ -45,8 +45,9 @@ namespace MoreMountains.CorgiEngine
         /// <summary>
         /// On Update, we apply a force if needed
         /// </summary>
-        protected virtual void Update()
+        protected override void Update()
         {
+            base.Update();
             CheckIfStacked();
             CheckIfGrounded();
 

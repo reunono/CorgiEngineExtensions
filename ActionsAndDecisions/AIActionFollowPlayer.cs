@@ -10,9 +10,9 @@ namespace MoreMountains.CorgiEngine
 	
 	public class AIActionFollowPlayer : AIAction
 	{
-		[Information("This speed value will override character speed. You can make your AI to flee from player. Flip Sprite override "+
+		[MMInformation("This speed value will override character speed. You can make your AI to flee from player. Flip Sprite override "+
 		"\"Flip on direction change\" from Character script when this action is performed. Set distances for diferent stats, as in "+
-		"standard AI Follow script.",MoreMountains.Tools.InformationAttribute.InformationType.Info,false)]
+		"standard AI Follow script.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 	    
 		[Header("Settings")]
 		public float followSpeed;
@@ -54,7 +54,7 @@ namespace MoreMountains.CorgiEngine
 		public override void PerformAction()
         {
             _characterBasicMovement.MovementSpeed = followSpeedStorage;
-			_targetCharacter.FlipOnDirectionChange = flipSprite;
+			//_targetCharacter.FlipOnDirectionChange = flipSprite;
 			AgentFollowsPlayer = true;
         }
 
