@@ -16,11 +16,11 @@ namespace CorgiEngineExtensions
 
         protected override void Awake()
         {
-            base.Awake();
             ShootButtons = new MMInput.IMButton[MaximumNumberOfWeapons];
             ReloadButtons = new MMInput.IMButton[MaximumNumberOfWeapons];
             ShootAxes = new MMInput.ButtonStates[MaximumNumberOfWeapons];
             _axesShoot = new string[MaximumNumberOfWeapons];
+            base.Awake();
         }
 
         protected override void InitializeButtons()
