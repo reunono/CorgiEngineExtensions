@@ -2,6 +2,7 @@
 This repository contains community-created extensions for the Corgi Engine, More Mountains' bestselling platforming solution, [available on the Unity Asset Store](https://assetstore.unity.com/packages/templates/systems/corgi-engine-2d-2-5d-platformer-26617?aid=1011lKhG). These extensions can be anything, from an alternate take on an existing Character Ability, to brand new ones, or new ways to use the engine.
 
 ## Contents
+* **TypedDamage**, _by AlexanderGheorghe_ : a collection of extension scripts that implement typed damage with scriptable objects, like explained in [this video](https://youtu.be/_q21rEaSlAs).
 * **FreezingDamageOnTouch**, _by AlexanderGheorghe_ : An extension of DamageOnTouch that freezes characters for a configurable duration. Also includes FreezingMeleeWeapon, which creates a damaging zone that freezes enemies for the duration given.
 * **MultipleWeapons**, _by AlexanderGheorghe_ : two scripts, extensions of CharacterHandleWeapon and InputManager that go together to allow you to have your characters handle any number of weapons you want at once, from 0 to 1000000, the possibilities are infinite! includes an InputManager.asset with already configured bindings for the second weapon reload and third weapon input (2, 3 for reloading second and third weapon, middle mouse for shooting the third weapon)
 * **ActionsAndDecisions**, _by Muppo_ : a collection of actions and decisions to use with the new (v5.0) Advanced AI system.
