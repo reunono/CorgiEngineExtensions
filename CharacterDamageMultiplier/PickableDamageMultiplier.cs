@@ -5,7 +5,7 @@ namespace CharacterDamageMultiplier
 {
     public class PickableDamageMultiplier : PickableItem
     {
-        public int DamageMultiplier = 2;
+        public float DamageMultiplier = 2f;
         private DamageMultiplierCharacterHandleWeapon _handleWeapon;
 
         protected override void Pick()
@@ -15,9 +15,7 @@ namespace CharacterDamageMultiplier
 
         protected override bool CheckIfPickable()
         {
-            _character = _collidingObject.MMGetComponentNoAlloc<Character>();
-            if (_character == null) return false;
-            _handleWeapon = _character.FindAbility<DamageMultiplierCharacterHandleWeapon>();
+            _handleWeapon = _collidingObject.MMGetComponentNoAlloc<Character>()?.FindAbility<DamageMultiplierCharacterHandleWeapon>();
             return _handleWeapon != null;
         }
     }
