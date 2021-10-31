@@ -19,9 +19,8 @@ namespace MoreMountains.CorgiEngine
 		public float StopDistance = 1f;
 		public float JetpackDistance = 0.2f;
 
-
-		public bool AgentFollowPlayer;
-		[ReadOnly] public Transform _target;
+		[MMReadOnly] public bool AgentFollowPlayer;
+		[MMReadOnly] public Transform _target;
 		protected float _speed;
 		protected float _direction;
 		protected CorgiController _controller;
@@ -56,7 +55,6 @@ namespace MoreMountains.CorgiEngine
 		    _characterJump = thisCharacter?.FindAbility<CharacterJump>();
 		    _jetpack = thisCharacter?.FindAbility<CharacterJetpack>();
 
-		    AgentFollowPlayer = false;
 		    thisCharacter.MovementState.ChangeState (CharacterStates.MovementStates.Idle);
 	    }
 
@@ -156,6 +154,7 @@ namespace MoreMountains.CorgiEngine
 		public virtual void AssignTarget()
 		{
 			_target = LevelManager.Instance.Players[0].transform;
+			AgentFollowPlayer = true;
 		}
 
 		public virtual void UnassignTarget()
