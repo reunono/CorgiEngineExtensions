@@ -2,6 +2,7 @@
 This repository contains community-created extensions for the Corgi Engine, More Mountains' bestselling platforming solution, [available on the Unity Asset Store](https://assetstore.unity.com/packages/templates/systems/corgi-engine-2d-2-5d-platformer-26617?aid=1011lKhG). These extensions can be anything, from an alternate take on an existing Character Ability, to brand new ones, or new ways to use the engine.
 
 ## Contents
+* **Stamina**, _by AlexanderGheorghe_ : simple stamina that gets consumed when running or dashing and stops either if it's too low. includes a progress bar updater, a demo scene and a .unitypackage for easy installation
 * **ProgressionSystem**, _by AlexanderGheorghe_ : a simple, extendable, event based progression system (get experience, level up). includes a demo scene and a .unitypackage for easy installation
 * **StatusEffectSystem**, _by AlexanderGheorghe_ : a simple, extendable, scriptable object and event based status system. includes status effect examples, a minimal demo scene and a .unitypackage for easy installation
 * **CharacterDamageMultiplier**, _by AlexanderGheorghe_ : a collection of extension scripts that implement character-level damage multiplier. includes an example of pickable damage multiplier. requires adding _public virtual void ApplyDamageMultiplier(float multiplier) {}_ declaration to Weapon.cs
