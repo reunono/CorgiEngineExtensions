@@ -113,7 +113,7 @@ namespace StaminaExtension
             switch (movementStateChange.NewState)
             {
                 case CharacterStates.MovementStates.Running:
-                    StartCoroutine(ConsumeStaminaConstantly(RunningStaminaConsumption, _runStopMethodName));
+                    StartCoroutine(ConsumeStaminaContinuously(RunningStaminaConsumption, _runStopMethodName));
                     break;
                 case CharacterStates.MovementStates.Dashing:
                     if (CurrentStamina >= DashingStaminaConsumption)
@@ -122,11 +122,11 @@ namespace StaminaExtension
                         BroadcastMessage(_dashStopMethodName);
                     break;
                 case CharacterStates.MovementStates.Rolling:
-                    StartCoroutine(ConsumeStaminaConstantly(RollingStaminaConsumption, _rollStopMethodName));
+                    StartCoroutine(ConsumeStaminaContinuously(RollingStaminaConsumption, _rollStopMethodName));
                     break;
             }
 
-            IEnumerator ConsumeStaminaConstantly(float consumptionPerSecond, string stopMethodName)
+            IEnumerator ConsumeStaminaContinuously(float consumptionPerSecond, string stopMethodName)
             {
                 _consuming = true;
                 while (_consuming)
