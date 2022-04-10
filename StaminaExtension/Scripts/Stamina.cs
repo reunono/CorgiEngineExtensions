@@ -79,6 +79,8 @@ namespace StaminaExtension
         public float RunningStaminaConsumption = 15;
         [Tooltip("how much stamina dashing will consume (per dash)")]
         public float DashingStaminaConsumption = 20;
+        [Tooltip("how much stamina rolling will consume (per second)")]
+        public float RollingStaminaConsumption = 25;
         
         [Header("Recovery")]
         
@@ -92,7 +94,8 @@ namespace StaminaExtension
 
         private const string _runStopMethodName = nameof(CharacterRun.RunStop);
         private const string _dashStopMethodName = nameof(CharacterDash.StopDash);
-        private bool _running;
+        private const string _rollStopMethodName = nameof(CharacterRoll.StopRoll);
+        private bool _consuming;
         private bool _recovering;
         private Coroutine _recovery;
 
@@ -105,11 +108,12 @@ namespace StaminaExtension
         public void OnMMEvent(MMStateChangeEvent<CharacterStates.MovementStates> movementStateChange)
         {
             if (movementStateChange.Target != gameObject) return;
-            if (movementStateChange.NewState != CharacterStates.MovementStates.Running) _running = false;
+            if (movementStateChange.NewState != CharacterStates.MovementStates.Running &&
+                movementStateChange.NewState != CharacterStates.MovementStates.Rolling) _consuming = false;
             switch (movementStateChange.NewState)
             {
                 case CharacterStates.MovementStates.Running:
-                    StartCoroutine(ConsumeRunningStamina());
+                    StartCoroutine(ConsumeStaminaConstantly(RunningStaminaConsumption, _runStopMethodName));
                     break;
                 case CharacterStates.MovementStates.Dashing:
                     if (CurrentStamina >= DashingStaminaConsumption)
@@ -117,22 +121,25 @@ namespace StaminaExtension
                     else
                         BroadcastMessage(_dashStopMethodName);
                     break;
+                case CharacterStates.MovementStates.Rolling:
+                    StartCoroutine(ConsumeStaminaConstantly(RollingStaminaConsumption, _rollStopMethodName));
+                    break;
             }
 
-            IEnumerator ConsumeRunningStamina()
+            IEnumerator ConsumeStaminaConstantly(float consumptionPerSecond, string stopMethodName)
             {
-                _running = true;
-                while (_running)
+                _consuming = true;
+                while (_consuming)
                 {
                     if (CurrentStamina > 0)
                     {
-                        CurrentStamina -= RunningStaminaConsumption * Time.deltaTime;
+                        CurrentStamina -= consumptionPerSecond * Time.deltaTime;
                         yield return MMCoroutine.WaitForFrames(1);
                     }
                     else
                     {
-                        _running = false;
-                        BroadcastMessage(_runStopMethodName);
+                        _consuming = false;
+                        BroadcastMessage(stopMethodName);
                     }
                 }
             }

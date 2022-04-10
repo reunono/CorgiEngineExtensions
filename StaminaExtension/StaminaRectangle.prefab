@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: -4342895061800036961}
   - component: {fileID: 1608910692237574330}
   - component: {fileID: -3445321945936498997}
+  - component: {fileID: 2232893018134833111}
   m_Layer: 9
   m_Name: StaminaRectangle
   m_TagString: Player
@@ -976,9 +977,44 @@ MonoBehaviour:
   MaximumStamina: 100
   RunningStaminaConsumption: 15
   DashingStaminaConsumption: 20
+  RollingStaminaConsumption: 25
   StaminaRecoveryDelay: 5
   StaminaRecoveryRate: 20
   OutOfStaminaFeedbacks: {fileID: 8208807895278345705}
+--- !u!114 &2232893018134833111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d317597e2b47bcb4e80316f1b372d79b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  RollDuration: 0.5
+  RollSpeed: 3
+  BlockHorizontalInput: 0
+  PreventDamageCollisionsDuringRoll: 0
+  Aim:
+    AimControl: 2
+    RotationMode: 0
+    MinimumAngle: -180
+    MaximumAngle: 180
+    CurrentAngle: 0
+  MinimumInputThreshold: 0.1
+  FlipCharacterIfNeeded: 1
+  RollCooldown: 0
+  LimitedRolls: 0
+  SuccessiveRollsAmount: 1
+  SuccessiveRollsLeft: 1
+  SuccessiveRollsResetDuration: 2
 --- !u!1 &159142
 GameObject:
   m_ObjectHideFlags: 0
