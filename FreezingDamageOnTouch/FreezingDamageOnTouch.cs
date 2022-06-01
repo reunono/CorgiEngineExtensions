@@ -15,15 +15,17 @@ namespace CorgiEngineExtensions
         protected override void Colliding(Collider2D collider)
         {
             base.Colliding(collider);
-            if (FreezeOnTouch) StartCoroutine(FreezeCollidingCharacter(collider));
+            if (!FreezeOnTouch) return;
+            var collidingCharacter = collider.gameObject.MMGetComponentNoAlloc<Character>();
+            if (collidingCharacter == null) return;
+            collidingCharacter.StartCoroutine(FreezeCharacter(collidingCharacter));
         }
 
-        protected IEnumerator FreezeCollidingCharacter(Collider2D collider)
+        private IEnumerator FreezeCharacter(Character character)
         {
-            var collidingCharacter = collider.gameObject.MMGetComponentNoAlloc<Character>();
-            collidingCharacter?.Freeze();
+            character.Freeze();
             yield return new WaitForSeconds(FreezeTime);
-            collidingCharacter?.UnFreeze();
+            character.UnFreeze();
         }
     }
 }
