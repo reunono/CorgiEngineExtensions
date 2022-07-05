@@ -15,7 +15,10 @@ namespace CorgiEngineExtensions
         protected override void Colliding(Collider2D collider)
         {
             base.Colliding(collider);
-            if (!FreezeOnTouch) return;
+            if (!isActiveAndEnabled
+                || _ignoredGameObjects.Contains(collider.gameObject)
+                || !MMLayers.LayerInLayerMask(collider.gameObject.layer,TargetLayerMask)
+                || !FreezeOnTouch) return;
             var collidingCharacter = collider.gameObject.MMGetComponentNoAlloc<Character>();
             if (collidingCharacter == null) return;
             collidingCharacter.StartCoroutine(FreezeCharacter(collidingCharacter));
