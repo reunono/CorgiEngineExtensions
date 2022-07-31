@@ -33,6 +33,7 @@ This repository contains community-created extensions for the Corgi Engine, More
 * **MultipleCharactersPointsOfEntryLevelManager**, _by Levrault_ : an extension of the LevelManager class to handle multiple points of entry in multiplayer games.
 * **NoClip**, _by Muppo_ : add this to your player Character to be able to press F4 and toggle a no clip mode (Invulnerable, no collisions, fly mode).
 * **ObjectActivatedZones**, _by Keith_ : This will allow you to create zones that are activated when colliding with the specified object, similar to the way the native KeyOperatedZones are activated by a key.
+* **RespawnWhenPlayerEntersRoom**, _by AlexanderGheorghe_ : a script that goes with the room system, respawning objects/enemies when the player enters the room where they're located
 * **Retroid**, _by Muppo_ :  is a metroidvania prototype done with Corgi 7.3 out of the box resources and a few extra custom scripts. This is a prototype, it will not be supported nor extended.
 * **SimpleConditionalAction**, _by Muppo_ : Add this component to an emtpy gameobject and set a reference tag, when all the tagged objects are disabled, feedbacks and actions will be played before this script disable itself.
 * **SplitScreen**, _by Levrault_ : A couple of classes to add split screen to your game, while having the option to fuse both cameras into one if your targets are close enough. You'll need three camera in your scene, a main, a left and right. For the left and right, set the viewport rect to 0.5 to make it take only half of the screen.
