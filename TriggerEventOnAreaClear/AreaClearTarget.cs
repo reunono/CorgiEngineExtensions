@@ -35,7 +35,7 @@ namespace TriggerEventOnAreaClear
         
         private void OnEnable()
         {
-            _triggerEventOnAreaClear = FindObjectsOfType<TriggerEventOnAreaClear>().SingleOrDefault(room => room.GetComponent<Collider2D>().bounds.Contains(transform.position));
+            _triggerEventOnAreaClear = FindObjectsOfType<TriggerEventOnAreaClear>().SingleOrDefault(room => room.GetComponent<Collider2D>().bounds.Contains(transform.position.MMSetZ(room.transform.position.z)));
             AddTarget();
         }
 
