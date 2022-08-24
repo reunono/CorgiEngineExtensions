@@ -44,7 +44,7 @@ public class BlockAbilitiesWhileAttacking : MonoBehaviour, MMEventListener<MMSta
     {
         foreach (var characterHandleWeapon in _characterHandleWeapons)
         {
-            if (weaponStateChangeEvent.Target != characterHandleWeapon.CurrentWeapon.gameObject) continue;
+            if (!characterHandleWeapon.CurrentWeapon || weaponStateChangeEvent.Target != characterHandleWeapon.CurrentWeapon.gameObject) continue;
             switch (weaponStateChangeEvent.NewState)
             {
                 case Weapon.WeaponStates.WeaponStart:
