@@ -16,7 +16,7 @@ namespace StaminaExtension
         /// <summary>
         /// What happens when the object gets picked
         /// </summary>
-        protected override void Pick()
+        protected override void Pick(GameObject picker)
         {
             _pickingCollider.GetComponent<Stamina>().CurrentStamina += StaminaToGive;
         }
