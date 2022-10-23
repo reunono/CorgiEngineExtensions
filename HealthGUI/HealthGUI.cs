@@ -31,8 +31,8 @@ namespace HealthGUI
         private void OnDisable()
         {
             this.MMEventStopListening();
-            _health.OnHit += UpdateHearts;
-            _health.OnRevive += UpdateHearts;
+            _health.OnHit -= UpdateHearts;
+            _health.OnRevive -= UpdateHearts;
         }
         
         private void Initialize()
