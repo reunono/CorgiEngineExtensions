@@ -1,145 +1,87 @@
-﻿using UnityEngine;
-using MoreMountains.Tools;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using MoreMountains.CorgiEngine;
+using MoreMountains.Tools;
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace MoreMountains.CorgiEngine
+namespace HealthGUI
 {
-    /// <summary>
-    /// Add this class to a GUI object, and it'll handle the instantiation and management of hearts based on the current lives of the player character
-    /// It's best used on a HorizontalLayoutGroup that will handle correct positioning natively
-    /// </summary>
-    public class HealthGUI : MonoBehaviour
+    public sealed class HealthGUI : MonoBehaviour, MMEventListener<CorgiEngineEvent>
     {
-        /// the sprite to use when the heart is full
+        [Tooltip("how much health a heart represents")]
+        public float HeartValue = 10;
         [Tooltip("the sprite to use when the heart is full")]
         public Sprite HeartFull;
-        /// the sprite to use when the heart is empty
-        [Tooltip("the sprite to use when the heart is empty")]
+        [Tooltip("show empty hearts or remove them?")]
+        public bool ShowEmptyHearts = true;
+        [Tooltip("the sprite to use when the heart is empty")] [MMCondition("ShowEmptyHearts")]
         public Sprite HeartEmpty;
-        /// the size of the heart to display
         [Tooltip("the size of the heart to display")]
         public Vector2 HeartSize = new Vector2(50, 50);
+        
+        private Health _health;
+        private List<Image> _hearts;
 
-        [Tooltip("the character you want your health to be displayed from")]
-        public GameObject playerCharacter;
-
-        [Tooltip("show empty hearts or remove them?")]
-        public bool showEmptyHearts;
-
-        /// the number of hearts to provision (if you know you'll never have more than, say, 5 hearts in your game, set it to 5.
-        //[Tooltip("the number of hearts to provision (if you know you'll never have more than, say, 5 hearts in your game, set it to 5.")]
-
-
-        private Health characterhealth;
-        private int MaxHealth;
-        private int CurrentHealth;
-
-        protected List<Image> Hearts;
-
-        /// <summary>
-        /// On Start we initialize our hearts
-        /// </summary>
-        protected virtual void Start()
+        private void OnEnable()
         {
-            Initialization();
+            if (LevelManager.HasInstance && LevelManager.Instance.Players != null) Initialize();
+            this.MMEventStartListening();
         }
-
-        /// <summary>
-        /// On Init we draw all our provision hearts
-        /// </summary>
-        protected virtual void Initialization()
+        
+        private void OnDisable()
         {
-            DrawHearts();
+            this.MMEventStopListening();
+            _health.OnHit += UpdateHearts;
+            _health.OnRevive += UpdateHearts;
         }
-
-        /// <summary>
-        /// Draws as many hearts as provisioned
-        /// </summary>
-        protected virtual void DrawHearts()
+        
+        private void Initialize()
         {
+            _health = LevelManager.Instance.Players[0].GetComponent<Health>();
+            _health.OnHit += UpdateHearts;
+            _health.OnRevive += UpdateHearts;
+            var hearts = (int)Mathf.Ceil(_health.MaximumHealth / HeartValue);
+            _hearts = new List<Image>();
+            foreach (Transform child in transform) Destroy(child.gameObject);
 
-            Health characterHealth = playerCharacter.GetComponent<Health>();
-            MaxHealth = characterHealth.MaximumHealth;
-
-            // we init our list
-            Hearts = new List<Image>();
-
-            // we clean any existing hearts
-            foreach (Transform child in this.transform)
+            for (var i = 0; i < hearts; i++)
             {
-                Destroy(child.gameObject);
-            }
-
-            // we draw as many hearts as needed
-            for (int i = 0; i < MaxHealth; i++)
-            {
-                GameObject heart = new GameObject();
-                heart.transform.SetParent(this.transform);
+                var heart = new GameObject();
+                heart.transform.SetParent(transform);
                 heart.name = "Heart" + i;
 
-                Image heartImage = heart.AddComponent<Image>();
+                var heartImage = heart.AddComponent<Image>();
                 heartImage.sprite = HeartFull;
 
                 heart.MMGetComponentNoAlloc<RectTransform>().localScale = Vector3.one;
                 heart.MMGetComponentNoAlloc<RectTransform>().sizeDelta = HeartSize;
 
-                Hearts.Add(heartImage);
+                _hearts.Add(heartImage);
             }
+            
+            UpdateHearts();
         }
 
-        /// <summary>
-        /// On Update we'll keep our hearts updated
-        /// </summary>
-        protected virtual void Update()
+        private void UpdateHearts()
         {
-
-            Health characterHealth = playerCharacter.GetComponent<Health>();
-            MaxHealth = characterHealth.MaximumHealth;
-            CurrentHealth = characterHealth.CurrentHealth;
-
-            UpdateHearts(MaxHealth, CurrentHealth);
-        }
-
-        /// <summary>
-        /// Every frame we make sure all our hearts are in the desired state
-        /// </summary>
-        protected virtual void UpdateHearts(int MaxHealth, int CurrentHealth)
-        {
-            for (int i = 0; i < MaxHealth; i++)
+            var fullHearts = (int)Mathf.Ceil(_health.CurrentHealth / HeartValue);
+            var hearts = (int)Mathf.Ceil(_health.MaximumHealth / HeartValue);
+            for (var i = 0; i < fullHearts; i++)
             {
-                if ((i < MaxHealth) && (Hearts[i].sprite != HeartEmpty))
-                {
-                    Hearts[i].sprite = HeartEmpty;
-
-                    if (!showEmptyHearts)
-                    {
-                        Hearts[i].color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-                    }
-
-                }
-
-                if ((i < CurrentHealth) && (Hearts[i].sprite != HeartFull))
-                {
-                    Hearts[i].sprite = HeartFull;
-
-                    if (!showEmptyHearts)
-                    {
-                        Hearts[i].color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                    }
-                }
-
-                if ((i < MaxHealth) && (Hearts[i].enabled == false))
-                {
-                    Hearts[i].enabled = true;
-                }
-
-                if ((i >= MaxHealth) && (Hearts[i].enabled != false))
-                {
-                    Hearts[i].enabled = false;
-                }
+                _hearts[i].sprite = HeartFull;
+                _hearts[i].enabled = true;
+            }
+            for (var i = fullHearts; i < hearts; i++)
+            {
+                _hearts[i].sprite = HeartEmpty;
+                _hearts[i].enabled = ShowEmptyHearts;
             }
         }
 
+        public void OnMMEvent(CorgiEngineEvent corgiEngineEvent)
+        {
+            if (corgiEngineEvent.EventType == CorgiEngineEventTypes.LevelStart)
+                Initialize();
+        }
     }
 }
