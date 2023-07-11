@@ -2,6 +2,7 @@
 This repository contains community-created extensions for the Corgi Engine, More Mountains' bestselling platforming solution, [available on the Unity Asset Store](https://assetstore.unity.com/packages/templates/systems/corgi-engine-2d-2-5d-platformer-26617?aid=1011lKhG). These extensions can be anything, from an alternate take on an existing Character Ability, to brand new ones, or new ways to use the engine.
 
 ## Contents
+* **FlyingCharacterDash**, _by AlexanderGheorghe_ : CharacterDash extension for flying characters
 * **PlayerInvisibility**, _by AlexanderGheorghe_ : an example of making the player invisible to the AI
 * **BlockAbilities**, _by AlexanderGheorghe_ : components for blocking selected character abilities while grabbing/attacking
 * **CharacterTimeToJumpApex**, _by AlexanderGheorghe_ : a component that adjusts the character's gravity while jumping such that it reaches the apex of the jump in the given time
