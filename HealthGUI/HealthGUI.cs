@@ -12,6 +12,7 @@ namespace HealthGUI
         public float HeartValue = 10;
         [Tooltip("the sprite to use when the heart is full")]
         public Sprite HeartFull;
+        public Sprite HeartHalf;
         [Tooltip("show empty hearts or remove them?")]
         public bool ShowEmptyHearts = true;
         [Tooltip("the sprite to use when the heart is empty")] [MMCondition("ShowEmptyHearts")]
@@ -24,7 +25,7 @@ namespace HealthGUI
 
         private void OnEnable()
         {
-            if (LevelManager.HasInstance && LevelManager.Instance.Players != null) Initialize();
+            if (LevelManager.HasInstance && LevelManager.Instance.Players != null && LevelManager.Instance.Players.Count > 0) Initialize();
             this.MMEventStartListening();
         }
         
@@ -64,7 +65,7 @@ namespace HealthGUI
 
         private void UpdateHearts()
         {
-            var fullHearts = (int)Mathf.Ceil(_health.CurrentHealth / HeartValue);
+            var fullHearts = Mathf.Max(0, (int)Mathf.Ceil(_health.CurrentHealth / HeartValue));
             var hearts = (int)Mathf.Ceil(_health.MaximumHealth / HeartValue);
             for (var i = 0; i < fullHearts; i++)
             {
@@ -76,6 +77,7 @@ namespace HealthGUI
                 _hearts[i].sprite = HeartEmpty;
                 _hearts[i].enabled = ShowEmptyHearts;
             }
+            if (fullHearts > 0 && _health.CurrentHealth < (fullHearts-.5f)*HeartValue+.001f) _hearts[fullHearts-1].sprite = HeartHalf;
         }
 
         public void OnMMEvent(CorgiEngineEvent corgiEngineEvent)
