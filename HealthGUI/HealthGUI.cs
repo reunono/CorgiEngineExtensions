@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace HealthGUI
 {
-    public sealed class HealthGUI : MonoBehaviour, MMEventListener<CorgiEngineEvent>
+    public sealed class HealthGUI : MonoBehaviour, MMEventListener<CorgiEngineEvent>, MMEventListener<HealthChangeEvent>
     {
         [Tooltip("how much health a heart represents")]
         public float HeartValue = 10;
@@ -26,21 +26,19 @@ namespace HealthGUI
         private void OnEnable()
         {
             if (LevelManager.HasInstance && LevelManager.Instance.Players != null && LevelManager.Instance.Players.Count > 0) Initialize();
-            this.MMEventStartListening();
+            this.MMEventStartListening<CorgiEngineEvent>();
+            this.MMEventStartListening<HealthChangeEvent>();
         }
         
         private void OnDisable()
         {
-            this.MMEventStopListening();
-            _health.OnHit -= UpdateHearts;
-            _health.OnRevive -= UpdateHearts;
+            this.MMEventStopListening<CorgiEngineEvent>();
+            this.MMEventStopListening<HealthChangeEvent>();
         }
         
         private void Initialize()
         {
             _health = LevelManager.Instance.Players[0].GetComponent<Health>();
-            _health.OnHit += UpdateHearts;
-            _health.OnRevive += UpdateHearts;
             var hearts = (int)Mathf.Ceil(_health.MaximumHealth / HeartValue);
             _hearts = new List<Image>();
             foreach (Transform child in transform) Destroy(child.gameObject);
@@ -84,6 +82,11 @@ namespace HealthGUI
         {
             if (corgiEngineEvent.EventType == CorgiEngineEventTypes.LevelStart)
                 Initialize();
+        }
+
+        public void OnMMEvent(HealthChangeEvent healthChangeEvent)
+        {
+            if (healthChangeEvent.AffectedHealth == _health) UpdateHearts();
         }
     }
 }
