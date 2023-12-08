@@ -2,6 +2,7 @@
 This repository contains community-created extensions for the Corgi Engine, More Mountains' bestselling platforming solution, [available on the Unity Asset Store](https://assetstore.unity.com/packages/templates/systems/corgi-engine-2d-2-5d-platformer-26617?aid=1011lKhG). These extensions can be anything, from an alternate take on an existing Character Ability, to brand new ones, or new ways to use the engine.
 
 ## Contents
+* **CharacterMultiButtonActivation**, _by AlexanderGheorghe_ : extension of CharacterButtonActivation that lets characters interact with multiple ButtonActivated that they're touching
 * **ProjectileHoming**, _by AlexanderGheorghe_ : component that goes on a Projectile, detects a target and rotates the Projectile's direction each frame to point towards the target
 * **PogoWeapon**, _by AlexanderGheorghe_ : Hollow Knight-like pogo weapon implementation example
 * **FlyingCharacterDash**, _by AlexanderGheorghe_ : CharacterDash extension for flying characters
