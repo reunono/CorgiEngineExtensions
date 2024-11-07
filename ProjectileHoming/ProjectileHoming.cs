@@ -13,8 +13,11 @@ public class ProjectileHoming : MonoBehaviour{
     private Collider2D _target;
     private float _time;
     private readonly Collider2D[] _targets = new Collider2D[10];
+    private bool _flipped;
 
     private void OnSpawnComplete(){
+        _flipped = Projectile.Direction.x < 0 && (TryGetComponent<SpriteRenderer>(out _) || Projectile.FlipValue != Vector3.one);
+        if (!_flipped && Projectile.Direction.x < 0) Projectile.SetDirection(Projectile.Direction, Quaternion.AngleAxis(Mathf.Atan2(Projectile.Direction.y, Projectile.Direction.x) * Mathf.Rad2Deg, Vector3.forward));
         _time = 0;
         _target = null;
         var count = Physics2D.OverlapCircle(Collider.bounds.center, TargetDetectionRadius, TargetDetectionFilter, _targets);
@@ -33,7 +36,8 @@ public class ProjectileHoming : MonoBehaviour{
         if (!_target) return;
         var direction = Vector3.RotateTowards(Projectile.Direction, _target.bounds.center - Collider.bounds.center,
             Speed.Evaluate(_time) * Time.deltaTime, 0);
-        var rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
+        var angle = _flipped ? Mathf.Atan2(-direction.y, -direction.x) : Mathf.Atan2(direction.y, direction.x);
+        var rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
         Projectile.SetDirection(direction, rotation);
         _time += Time.deltaTime;
     }
